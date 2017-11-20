@@ -1,21 +1,45 @@
-
 <html>
+
 <script>
-    function exampleName() {
-        var firstName = document.getElementById("firstName").value;
-        var lastName = document.getElementById("lastName").value;
-        var fullName = firstName + lastName;
-        console.log(fullName); //outputting to f12 console
-        document.getElementById("output").innerHTML = fullName; //outputting to html
+    function square(input) {
+        var a = input;
+        var b = a * a;
+        return b;
+    }
+
+    function getAndOutputSquare() {
+        var input = document.getElementById("input").value;
+        var result = square(input);
+        document.getElementById("output").innerHTML = result;
+    }
+
+    <html>
+
+<script>
+    function square(input) {
+        var 1 = input;
+        var 2 = input;
+        var 3 = input;
+        var total = 1 + 2 + 3;
+        return 6;
+    }
+
+    function getAndOutputSquare() {
+        var input = document.getElementById("input").value;
+        var result = add(input);
+        document.getElementById("output").innerHTML = result;
     }
 </script>
 
-<body>
-    <input type="text" id="firstName"  placeholder="First name" />
-    <input type="text" id="lastName" placeholder="Last Name" />
-    <button onclick="exampleName()">Click me!</button>
 
+<html>
+
+
+<body>
+    <input type="number" id="input" />
+    <button onclick="getAndOutputSquare()">click Me</button>
     <p id="output"></p>
+
 </body>
 
 </html>
