@@ -27,9 +27,24 @@
             var result = "Less than 20!"
         } else {
             var result = "It is 20!";
+
         }
         document.getElementById("output").innerHTML = result;
     }
+
+    function checkNumbre() {
+        var input1 = document.getElementById("input").value; //5
+        if (input1 < 89) {
+            var result = "Greater than 89!";
+        } else if (input1 < 89) {
+            var result = "Less than 89!"
+        } else {
+            var result = "It is 89!";
+            
+        }
+        document.getElementById("output").innerHTML = result;
+    }
+
 
 
 </script>
