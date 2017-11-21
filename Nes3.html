@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    function checkNumber() {
+        var input1 = document.getElementById("input").value; //5
+        if (input1 == 0) {
+            var result = "Yes can't divide by 0!";
+        } else if (input1 0) {
+            var result = "No!"
+        } else {
+            var result = "No it is 0!";
+        }
+        document.getElementById("output").innerHTML = result;
+    }
+
+    
+</script>
+
+<body>
+
+    <input type="text" id="input" />
+    <button onclick="checkNumber3()">Click Me</button>
+    <p id="output"></p>
+
+</body>
+
+</html>
+
+</html>
