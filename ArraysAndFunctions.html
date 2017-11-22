@@ -8,26 +8,19 @@
 </head>
 
 <script>
-    function outsentence() {
+    var sentence = ["Luke", "I", "am", "your", "father"]
 
-    var sentence= ["Luke", "I", "am", "your", "father",];{
+    console.log(sentence.toString());
 
-        console.log(sentence.tostring());
+
+    function displayArray(array) {
+        var output = "";
+        for (var i = 0; i < array.length; i++) {
+            output += sentence[i] + " ";
+        }
+        return output;
     }
-     
-     function displayArray(array) {
-            var output = "";
-            //additional code to go here
-            return output;
-}
-for (var i = 0; i < array.length; i++) {
-   output += sentence[i] + " ";
-}
-
-    }
+    var result = displayArray(sentence);
+    console.log(result);
 
 </script>
-
-    
-
-
