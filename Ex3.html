@@ -11,13 +11,10 @@
     function outputNumbers() {
         //Part 3 if else statements using short circuit
         var value;
-        if ( value === undefinedI) {
-                   console.log("underage") ;
+        if ( value === undefinedI || value ===null || value=="") {
+                   console.log("value is mandatory") ;
         } else if (age>=18 && age <=65) {
-                   console.log("insurable");
-
-        }else { 
-                   console.log("out of range");
+                   console.log("value");
         }
     }
 </script>
