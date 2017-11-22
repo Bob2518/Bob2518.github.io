@@ -1,0 +1,41 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<script>
+
+    var nameList = ["Bob", "Adam", "Al", "Lucy", "Joe", "Willie"];
+
+    function addName() {
+        var name = document.getElementById("nameInput").value;
+        nameList.push(name);
+        alterList();
+    }
+
+    function alterList() {
+        var totalList = "";
+        for (var i = 0; i < nameList.length; i++) {
+            totalList += "<li>" + nameList[i] + "</li>";
+        }
+        document.getElementById("listOfNames").innerHTML = totalList;
+    }
+
+    function deleteName() {
+        var nameToDelete = document.getElementById("deleteNameInput").value;
+        for (var i = 0; i < nameList.length; i++) {
+            if (nameList[i] == nameToDelete) {
+                //First parameter is the index to move at
+                //Second parameter is how many from that point
+                nameList.splice(i, 1);
+            }
+        }
+        alterList();
+
+    }
+
+
