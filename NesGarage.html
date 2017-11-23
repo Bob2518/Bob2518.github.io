@@ -1,0 +1,137 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+
+    var carList = []
+
+    function createCar(age, make, registration, color) {
+        var carObject = {
+            age: age,
+            make: make,
+            registration: registration,
+            color: color
+        }
+        carList.push(carObject);
+    }
+
+
+    function outputList() {
+        var carOutput = "";
+        for (var i = 0; i < carList.length; i++) {
+            carOutput += "<option>";
+            carOutput += carList[i].registration;
+            carOutput += "</option>";
+        }
+        document.getElementById("output").innerHTML = carOutput;
+    }
+
+
+
+    function deleteCar(registrationToDelete) {
+        for (var i = 0; i < carList.length; i++) {
+            if (carList[i].registration == registrationToDelete) {
+                carList.splice(i, 1);
+            }
+        }
+    }
+    function createCarFromForm() {
+        var make = document.getElementById("inputMake").value;
+        var age = document.getElementById("inputAge").value;
+        var color = document.getElementById("inputColor").value;
+        var registration = document.getElementById("inputRegistration").value;
+
+        if (registration == "") {
+            alert("NEED REGISTRATION");
+        } else {
+            createCar(age, make, registration, color);
+            outputList();
+        }
+    }
+    function deleteAndUpdateScreen() {
+        var registration = document.getElementById("deleteInput").value;
+
+        if (registration == "") {
+            alert("NEED REGISTRATION");
+        }
+        else {
+            deleteCar(registration);
+            outputList();
+        }
+    }
+
+    function loadCar() {
+        var listBox = document.getElementById("output");
+        var selectedRegistration = listBox.options[listBox.selectedIndex].value
+
+        for (var i = 0; i < carList.length; i++) {
+            if (carList[i].registration == selectedRegistration) {
+                var output = "";
+                output += "Registration: " + carList[i].registration;
+                output += " Age: " + carList[i].age;
+                output += " Color: " + carList[i].color;
+                output += " Make: " + carList[i].make;
+                document.getElementById("individualOutput").innerHTML = output;
+
+            }
+        }
+
+    }
+
+    function upperCaseF(e) {
+        e.value = e.value.toUpperCase();
+    }
+
+    function createCarOnEnter(e) {
+        //e.keyCode gets numerical representation of key pressed
+        //13 is enter key
+        if (e.keyCode == 13) {
+            createCarFromForm();
+        }
+    }
+    //onkeydown="createCarOnEnter(event)"
+
+    function deleteCarOnEnter(e) {
+        if (e.keyCode == 13) {
+            deleteAndUpdateScreen();
+        }
+    }
+
+</script>
+
+<body>
+    <h1>Create Car</h1>
+    <br/> Age:
+    <input type="number" id="inputAge" onkeydown="createCarOnEnter(event)" />
+    <br/> Make:
+    <input type="text" id="inputMake" onkeydown="createCarOnEnter(event)" />
+    <br/> Registration:
+    <input type="text" id="inputRegistration" onkeyup="upperCaseF(this)" onkeydown="createCarOnEnter(event)" />
+    <br/> Color:
+    <input type="text" id="inputColor" onkeydown="createCarOnEnter(event)" />
+    <br/>
+    <button onclick="createCarFromForm()">Create Car</button>
+
+    <hr/>
+
+    <h1>Remove Car</h1>
+    Registration:
+    <input type="text" id="deleteInput" style="text-transform:uppercase" onkeyup="upperCaseF(this)" onkeydown="deleteCarOnEnter(event)"
+    />
+    <button onclick="deleteAndUpdateScreen()">Remove</button>
+
+    <hr/>
+
+    <h1>Car List</h1>
+    <select id="output" size="10" onchange="loadCar()" style="min-width:100px"></select>
+    <p id="individualOutput"></p>
+
+
+</body>
+
+</html>
