@@ -13,41 +13,70 @@
 
     var carlist = []
 
-    function createCar() {
+    function createCar(age, make, registration, color) {
         var carObject = {
-            age: 5,
-            make: "Peugeot",
-            registration: "YK10YKM",
-            color: "Red"
+            age: age,
+            make: make,
+            registration: registration,
+            color: color
         }
         carlist.push(carObject);
     }
-    createCar();
-    createCar();    
+      
 
     function outputlist() {
-        //output list
+        var carOutput = "";
         for (var i = 0; i < carlist.length; i++) {
-            console.log(carlist[i].registration);
+            carOutput += "Registration: " + carlist[i].registration;
+            carOutput += "Make: " + carlist[i].make;
+            carOutput += "Color: " + carlist[i].color;
+            carOutput += "Age: " + carlist[i].age;
+            carOutput += "<br/>";
         }
-
+        document.getElementById("output").innerHTML = carOutput
     }
 
-    outputlist();
     function deleteCar(registration) {
         for (var i = 0; i < carlist.length; i++) {
             if (carlist[i].registration == registration) {
                 carlist.splice(i, 1);
             }
         }
+    }
+
+        function createCarFromForm() {
+            var make= document.getElementById("inputMake").value;
+            var age= document.getElementById("inputAge").vale;
+            var color= document.getElementById("inputColor").value;
+            var registration= document.getElementById("inputRegistration").value;
+            createCar(age, make, registration, color);
+            //Temporary!!!
+            outputlist()
+            
 
     }
 
-    deleteCar("YK10 YKM");
-    deleteCar("PG10 YKM");
-
-    outputlist();
+    
 
 </script>
 
 <body>
+<h1>Create car</h1>
+Age: <input type="number" id="inputAge"/><br/>
+Make: <input type="text" id="inputMake"/><br/>
+Registration: <input type="text" id="inputRegistration"/><br/>
+color: <input type="text" id="inputColor"/><br/>
+<button onclick="createCarFromForm()">Create car</button>
+
+
+<hr/>
+<h1>Remove Car</h1>
+Registration: <input type="text" id="deleteInput"/> 
+<button>Remove</button>
+
+<hr/>
+<h1>car list</h1>
+<p id = "output"></p>
+
+
+</body>
