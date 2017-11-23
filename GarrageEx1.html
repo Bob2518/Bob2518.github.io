@@ -45,16 +45,27 @@
     }
 
         function createCarFromForm() {
-            var make= document.getElementById("inputMake").value;
-            var age= document.getElementById("inputAge").vale;
+             var make= document.getElementById("inputMake").value;
+            var age= document.getElementById("inputAge").value;
             var color= document.getElementById("inputColor").value;
             var registration= document.getElementById("inputRegistration").value;
             createCar(age, make, registration, color);
             //Temporary!!!
             outputlist()
+        }
+        function deleAndUpdateScreen() {
+            //Get value from text box
+            var registration = document.getElementByID("deleteInput").value;
+            //Delete it from in-memory arrayy
+            deleteCar(registration);
+            //Refresh ouputted list
+            outputlist();
+
+           
             
 
-    }
+    }  
+    
 
     
 
@@ -72,7 +83,7 @@ color: <input type="text" id="inputColor"/><br/>
 <hr/>
 <h1>Remove Car</h1>
 Registration: <input type="text" id="deleteInput"/> 
-<button>Remove</button>
+<button onclick=deleteAndUpdateScreen>Remove</button>
 
 <hr/>
 <h1>car list</h1>
