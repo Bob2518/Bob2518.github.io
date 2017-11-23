@@ -1,0 +1,59 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<script>
+    //Age
+    //Color
+    //registration
+    //make
+    var exampleCar = {
+        age: 5,
+        color: "Red",
+        registration: "YK10 YKM",
+        make: "Peugeot"
+    };
+
+    var exampleCar2 = {
+        age: 3,
+        color: "Yellow",
+        registration: "PG10 YKM",
+        make: "Lambo"
+    };
+
+    var carlist = []
+
+    carlist.push(exampleCar2);
+    carlist.push(exampleCar);
+
+    function outputlist() {
+        //output list
+        for (var i = 0; i < carlist.length; i++) {
+            console.log(carlist[i].registration);
+        }
+
+    }
+
+    outputlist();
+    function deleteCar(registration) {
+        for (var i = 0; i < carlist.length; i++) {
+            if (carlist[i].registration == registration) {
+                carlist.splice(i, 1);
+            }
+        }
+
+    }
+
+    deleteCar("YK10 YKM");
+    deleteCar("PG10 YKM");
+
+    outputlist();
+
+</script>
+
+<body>
