@@ -8,28 +8,22 @@
 </head>
 
 <script>
-    //Age
-    //Color
-    //registration
-    //make
-    var exampleCar = {
-        age: 5,
-        color: "Red",
-        registration: "YK10 YKM",
-        make: "Peugeot"
-    };
-
-    var exampleCar2 = {
-        age: 3,
-        color: "Yellow",
-        registration: "PG10 YKM",
-        make: "Lambo"
-    };
+  
+    
 
     var carlist = []
 
-    carlist.push(exampleCar2);
-    carlist.push(exampleCar);
+    function createCar() {
+        var carObject = {
+            age: 5,
+            make: "Peugeot",
+            registration: "YK10YKM",
+            color: "Red"
+        }
+        carlist.push(carObject);
+    }
+    createCar();
+    createCar();    
 
     function outputlist() {
         //output list
