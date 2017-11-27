@@ -1,39 +1,48 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
- <button>Load Susperheroes</button>
- 
- 
 
- Name: <p id="squadName"></p>
- Formed: <p id="formed"></p>
- HomeTown: <p id="homeTown"></p>
- SecretBase: <p id="secretBase"></p>
- Active: <p id="active"></p>
+<body>
+    <button>Load Susperheroes</button> Name:
+    <p id="squadName"></p>
+    Formed:
+    <p id="formed"></p>
+    HomeTown:
+    <p id="homeTown"></p>
+    SecretBase:
+    <p id="secretBase"></p>
+    Active:
+    <p id="active"></p>
 
 </body>
 
 <script>
     function loadData() {
-        var
+        var requestURL = 'https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json';
 
+        var request = new XMLHttpRequest();
 
+        request.open('GET', requestURL);
 
+        request.responseType = 'json'
 
+        request.send();
+
+        request.onload = function () {
+            var superHeroes = request.response;
+            loadPageWithData(superHeroes.formed);
+        }
 
     }
 
+    function loadPageWith(superHeroes){
+        console.log(superHeroes)
 
-
-
-
-
-
-
+</script>
 
 </html>
