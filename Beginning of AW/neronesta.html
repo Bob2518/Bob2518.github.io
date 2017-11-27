@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <button onclick=>Load Susperheroes</button> Name:
+    <button onclick= "loadData()">loadxheroes</button> Name:
     <p id="squadName"></p>
     Formed:
     <p id="formed"></p>
@@ -19,9 +19,18 @@
     Active:
     <p id="active"></p>
 
+
+    <h1>Hero List</h1>
+    <select id="output" size="10" onchange="loadHero()" style="min-width:100px"></select>
+    <p id="individualOutput"></p>
+
+
 </body>
 
 <script>
+
+    var herolist = []
+
     function loadData() {
         var requestURL = 'https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json';
 
@@ -35,17 +44,60 @@
 
         request.onload = function () {
             var superHeroes = request.response;
-            loadPageWithData(superHeroes.formed);
+            loadPageWithData(superHeroes);
         }
 
     }
 
-    function loadPageWith(superHeroes){
-        document.getElement("squadName").innerHTML = superheroes.squadName;
-        //Formed document.getElement("squadName").innerHTML = superheroes.formed;
-        //Hometown document.getElement("squadName").innerHTML = superheroes.hometown;
-        //Secret base document.getElement("squadName").innerHTML = superheroes.secret base;
-        //Active document.getElement("squadName").innerHTML = superheroes.active;
+    function loadPageWithData(superHeroes){
+        document.getElementById("squadName").innerHTML = superHeroes.squadName;
+        //Formed document.getElementById("squadName").innerHTML = superheroes.formed;
+        //Hometown document.getElementById("squadName").innerHTML = superheroes.hometown;
+        //Secret base document.getElementById("squadName").innerHTML = superheroes.secret base;
+        //Active document.getElementById("squadName").innerHTML = superheroes.active;
+
+        document.getElementById("secretBase").innerHTML = superHeroes.secretBase;
+        document.getElementById("formed").innerHTML = superHeroes.formed;
+        document.getElementById("homeTown").innerHTML = superHeroes.homeTown;
+        document.getElementById("active").innerHTML = superHeroes.active;
+
+        var superHeromembers = superHero.members;
+        for (var i= 0; i< superheroeMembers.length; i++) {
+            herolist.push(superHeromemebers[i]);
+
+        }
+        outputlist();
+
+    //output contents of hero arra to list box on screen
+    function outputList() {
+        var heroOutput = "";
+        for (var i = 0; i < heroList.length; i++) {
+            heroOutput += "<option>";
+            heroOutput += heroList[i].name;
+            heroOutput += "</option>";
+        }
+        document.getElementById("output").innerHTML = heroOutput;
+    }   
+
+    function loadHero() {
+        var listBox = document.getElementById("output");
+        var selectedRegistration = listBox.options[listBox.selectedIndex].value
+
+        for (var i = 0; i < heroList.length; i++) {
+            if (heroList[i].registration == selectedname) {
+                var output = "";
+                output += "Name: " + heroList[i].name;
+                output += " Age: " + heroList[i].age;
+                output += " Color: " + heroList[i].color;
+                output += " Make: " + heroList[i].make;
+                document.getElementById("individualOutput").innerHTML = output;
+
+            }
+        }
+
+    }
+
+
     }       
 </script>
 
