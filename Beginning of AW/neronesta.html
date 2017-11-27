@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <button>Load Susperheroes</button> Name:
+    <button onclick=>Load Susperheroes</button> Name:
     <p id="squadName"></p>
     Formed:
     <p id="formed"></p>
@@ -41,8 +41,12 @@
     }
 
     function loadPageWith(superHeroes){
-        console.log(superHeroes)
-
+        document.getElement("squadName").innerHTML = superheroes.squadName;
+        //Formed document.getElement("squadName").innerHTML = superheroes.formed;
+        //Hometown document.getElement("squadName").innerHTML = superheroes.hometown;
+        //Secret base document.getElement("squadName").innerHTML = superheroes.secret base;
+        //Active document.getElement("squadName").innerHTML = superheroes.active;
+    }       
 </script>
 
 </html>
