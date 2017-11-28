@@ -1,0 +1,58 @@
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    
+    <script>
+        var kingList = [];
+    
+        function loadData() {
+            var requestURL = 'https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json';
+            var request = new XMLHttpRequest();
+            request.open('GET', requestURL);
+            request.responseType = 'json'
+            request.send();
+            request.onload = function () {
+                var kings = request.response;
+                loadPageWithData(kings);
+            }
+        }
+        function loadPageWithData(kings) {
+            for (var i = 0; i < kings.length; i++) {
+                kingList.push(kings[i]);
+            }
+        }
+        loadData();
+    
+    
+    
+        function search() {
+            var kingNameToSearch; //equal text in textbox
+            for (var i = 0; i < kingList.length; i++) {
+                //If statement, checking if current kings name is equal to kings we're looking for
+                {
+                    document.getElementById("output").innerHTML += kingList[i].nm;
+                    document.getElementById("output").innerHTML += kingList[i].cty;
+                    //and output the other two attributes as well
+                    //and format it so it doesn't look awful for bonus points+                
+                }
+            }
+    
+        }
+    
+    
+    
+    
+    </script>
+    
+    <body>
+        <input type="text" id="kingsInput" />
+        <button onclick="search()">Search</button>
+        <p id="output"></p>
+    </body>
+    
+    </html>
