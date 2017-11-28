@@ -61,7 +61,7 @@
         if (kingName == "") {
             alert("NEED kingName");
         } else {
-            createCar(name, city, house, years);
+            createCar(nme, city, hse, yrs);
             outputList();
         }
     }
@@ -86,8 +86,8 @@
                 var output = "";
                 output += "Kingname: " + kingList[i].kingName;
                 output += " City: " + kingList[i].city;
-                output += " House: " + kingList[i].house;
-                output += " Years: " + carList[i].years;
+                output += " House: " + kingList[i].hse;
+                output += " Years: " + carList[i].yrs;
                 document.getElementById("individualOutput").innerHTML = output;
 
             }
