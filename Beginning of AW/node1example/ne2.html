@@ -1,0 +1,85 @@
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    
+    <script>
+        var kingList = [];
+    
+        function loadData() {
+            var requestURL = 'https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json';
+            var request = new XMLHttpRequest();
+            request.open('GET', requestURL);
+            request.responseType = 'json'
+            request.send();
+            request.onload = function () {
+                var kings = request.response;
+                loadPageWithData(kings);
+            }
+        }
+    
+        function loadPageWithData(kings) {
+            for (var i = 0; i < kings.length; i++) {
+                kingList.push(kings[i]);
+            }
+            search();
+        }
+    
+        loadData();
+    
+        function search() {
+            var kingNameToSearch = document.getElementById("kingsInput").value
+            var totalListOutput = "";
+            for (var i = 0; i < kingList.length; i++) {
+                if (kingList[i].nm.toLowerCase().includes(kingNameToSearch.toLowerCase())) {
+                    totalListOutput += "<option>";
+                    totalListOutput += kingList[i].nm;
+                    totalListOutput += "</option>";
+                }
+            }
+            document.getElementById("output").innerHTML = totalListOutput;
+        }
+    
+        function loadKing() {
+            var listBox = document.getElementById("output");
+            var selectedName = listBox.options[listBox.selectedIndex].value
+            for (var i = 0; i < kingList.length; i++) {
+                if (kingList[i].nm == selectedName) {
+                    document.getElementById("name").innerHTML =  kingList[i].nm;
+                    document.getElementById("years").innerHTML =   kingList[i].yrs;
+                    document.getElementById("house").innerHTML =   kingList[i].hse;
+                    document.getElementById("city").innerHTML =   kingList[i].cty;
+                }
+            }
+        }
+    
+    
+    
+    
+    </script>
+    
+    <body>
+        <input type="text" id="kingsInput" onkeyup="search()" />
+        <button onclick="search()">Search</button>
+        <br>
+        <select id="output" size="10" onchange="loadKing()" style="min-width:100px"></select>
+        <p>Name:
+            <b id="name"></b>
+        </p>
+        <p>House:
+            <b id="house"></b>
+        </p>
+        <p>City:
+            <b id="city"></b>
+        </p>
+        <p>Years:
+            <b id="years"></b>
+        </p>
+    
+    </body>
+    
+    </html>
