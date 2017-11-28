@@ -52,9 +52,70 @@
             }
         }
     }
-    
-    
-    
+    function createKingFromForm() {
+        var nm = document.getElementById("inputName").value;
+        var city = document.getElementById("inputCity").value;
+        var hse = document.getElementById("inputHouse").value;
+        var yrs = document.getElementById("inputYears").value;
+
+        if (kingName == "") {
+            alert("NEED kingName");
+        } else {
+            createCar(name, city, house, years);
+            outputList();
+        }
+    }
+    function deleteAndUpdateScreen() {
+        var kingName = document.getElementById("deleteInput").value;
+
+        if (kingName == "") {
+            alert("NEED KingName");
+        }
+        else {
+            deleteKing(kingName);
+            outputList();
+        }
+    }
+
+    function loadKing() {
+        var listBox = document.getElementById("output");
+        var selectedKingname = listBox.options[listBox.selectedIndex].value
+
+        for (var i = 0; i < kingList.length; i++) {
+            if (kingList[i].kingName == selectedKingname) {
+                var output = "";
+                output += "Kingname: " + kingList[i].kingName;
+                output += " City: " + kingList[i].city;
+                output += " House: " + kingList[i].house;
+                output += " Years: " + carList[i].years;
+                document.getElementById("individualOutput").innerHTML = output;
+
+            }
+        }
+
+    }
+
+    function upperCaseF(e) {
+        e.value = e.value.toUpperCase();
+    }
+
+    function createKingOnEnter(e) {
+        //e.keyCode gets numerical representation of key pressed
+        //13 is enter key
+        if (e.keyCode == 13) {
+            createKingFromForm();
+        }
+    }
+    //onkeydown="createKingOnEnter(event)"
+
+    function deleteKingOnEnter(e) {
+        if (e.keyCode == 13) {
+            deleteAndUpdateScreen();
+        }
+    }
+
+
+
     </script>
     
     <body>
