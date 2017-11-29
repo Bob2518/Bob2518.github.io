@@ -394,6 +394,33 @@
             deleteAndUpdateScreen();
           }
         }
+
+        
+    function search() {
+        var carNameToSearch = document.getElementById("kingsInput").value
+        var totalListOutput = "";
+        for (var i = 0; i < carList.length; i++) {
+            if (carList[i].nm.toLowerCase().includes(carNameToSearch.toLowerCase())) {
+                totalListOutput += "<option>";
+                totalListOutput += carList[i].nm;
+                totalListOutput += "</option>";
+            }
+        }
+        document.getElementById("output").innerHTML = totalListOutput;
+    }
+
+    function loadCar() {
+        var listBox = document.getElementById("output");
+        var selectedName = listBox.options[listBox.selectedIndex].value
+        for (var i = 0; i < carList.length; i++) {
+            if (carList[i].nm == selectedName) {
+                document.getElementById("name").innerHTML =  carList[i].age;
+                document.getElementById("years").innerHTML =   carList[i].registration;
+                document.getElementById("house").innerHTML =   carList[i].make;
+                document.getElementById("city").innerHTML =   carList[i].color;
+            }
+        }
+    }
       </script>
       <div class="my-auto">
         <h2 class="mb-5">Projects</h2>
@@ -422,6 +449,22 @@
         <h1>Car List</h1>
         <select id="output" size="10" onchange="loadCar()" style="min-width:100px"></select>
         <p id="individualOutput"></p>
+        <button onclick="search()">Search</button>
+        <br>
+        <select id="output" size="10" onchange="loadCar()" style="min-width:100px"></select>
+        <p>Age:
+            <b id="age"></b>
+        </p>
+        <p>Registration:
+            <b id="registration"></b>
+        </p>
+        <p>Make:
+            <b id="make"></b>
+        </p>
+        <p>Color:
+            <b id="color"></b>
+        </p>
+    
       </div>
     </section>
 
